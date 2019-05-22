@@ -52,3 +52,26 @@ kubectl logs kube-bench-j76s9
 [INFO] 1.1 API Server
 ...
 ```
+
+## kube-hunter
+Kube-hunter hunts for security weaknesses in Kubernetes clusters. The tool was developed to increase awareness and visibility for security issues in Kubernetes environments. 
+
+https://github.com/aquasecurity/kube-hunter
+
+Easiest way to run kube-hunter is to run the following command on a machine with network access to the cluster:
+
+```
+$ docker run -it --rm --network host aquasec/kube-hunter --active
+Choose one of the options below:
+1. Remote scanning      (scans one or more specific IPs or DNS names)
+2. Subnet scanning      (scans subnets on all local network interfaces)
+3. IP range scanning    (scans a given IP range)
+Your choice: 2
+~ Started
+~ Discovering Open Kubernetes Services...
+|
+| Kubelet API (readonly):
+|   type: open service
+|   service: Kubelet API (readonly)
+|_  host: 192.168.65.3:10255
+```
