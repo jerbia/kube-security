@@ -17,11 +17,12 @@ After registration you will get an email with the scan token.
 Next step would be to run a scan. This can be done either by adding following lines at the end of your Dockerfile:
 
 ```
+ARG TOKEN
 ADD https://get.aquasec.com/microscanner /
 RUN chmod +x /microscanner
-RUN /microscanner <TOKEN> [--continue-on-failure]
+RUN /microscanner $TOKEN [--continue-on-failure]
 ```
-And then running a regular ```docer build```.
+And then run Docker build using ```docker build --build-arg TOKEN=<SCAN TOKEN VALUE>```
 
 Alternatively, you can scan an image that is already created using the following project:
 [microscanner-wrapper](https://github.com/lukebond/microscanner-wrapper) 
