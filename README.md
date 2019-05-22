@@ -42,7 +42,7 @@ NAME                      READY   STATUS              RESTARTS   AGE
 kube-bench-j76s9   0/1     ContainerCreating   0          3s
 
 # Wait for a few seconds for the job to complete
-$ kubectl get pods
+$ kubectl get pods --show-all
 NAME                      READY   STATUS      RESTARTS   AGE
 kube-bench-j76s9   0/1     Completed   0          11s
 
