@@ -14,15 +14,20 @@ docker run --rm -it aquasec/microscanner --register <email address>
 ```
 After registration you will get an email with the scan token.
 
-Next step would be to run a scan. This can be done either by adding following lines at the end of your Dockerfile:
+Next step would be to run a scan. The below example is shows how to add a Scan to an alpine based image (hence the 'apk add' command). The Dockerfile is added with the below commands and the last command will run a scan on the image using the scan token:
 
 ```
+RUN apk add --no-cache ca-certificates && update-ca-certificates
 ARG TOKEN
 ADD https://get.aquasec.com/microscanner /
 RUN chmod +x /microscanner
 RUN /microscanner $TOKEN [--continue-on-failure]
 ```
-And then run Docker build using ```docker build --build-arg TOKEN=<SCAN TOKEN VALUE>```
+You can try our microscanner by building the sample Dockerfile on this project: 
+
+```
+docker build --build-arg TOKEN=<SCAN TOKEN VALUE> .
+```
 
 Alternatively, you can scan an image that is already created using the following project:
 [microscanner-wrapper](https://github.com/lukebond/microscanner-wrapper) 
